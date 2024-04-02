@@ -1,9 +1,132 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import { AppConfig } from "../utils/AppConfig";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
 
-const pageTitle = "首页";
+const { title, description } = AppConfig;
+const articles = [
+  {
+    id: 0,
+    title: "Welcome",
+    date: "2023-03-28",
+    description: "Welcome to my blog!",
+  },
+  {
+    id: 1,
+    title: "My First Post",
+    date: "2023-03-29",
+    description: "This is my first post on my blog!",
+  },
+  {
+    id: 2,
+    title: "My Second Post",
+    date: "2023-03-30",
+    description: "This is my second post on my blog!",
+  },
+  {
+    id: 3,
+    title: "My Third Post",
+    date: "2023-03-31",
+    description: "This is my third post on my blog!",
+  },
+  {
+    id: 4,
+    title: "My Fourth Post",
+    date: "2023-04-01",
+    description: "This is my fourth post on my blog!",
+  },
+  {
+    id: 5,
+    title: "My Fifth Post",
+    date: "2023-04-02",
+    description: "This is my fifth post on my blog!",
+  },
+  {
+    id: 6,
+    title: "My Sixth Post",
+    date: "2023-04-03",
+    description: "This is my sixth post on my blog!",
+  },
+];
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <h1>My awesome blog subtitle</h1>
-</BaseLayout>
+<MainGridLayout head={{ title, description }}>
+  <section>
+    <div class="h-80">
+      <h1>Welcome ! to Aiden's Blog</h1>
+    </div>
+  </section>
+  <section class="flex space-x-8">
+    <aside class="w-[17.5rem] space-y-8">
+      <div class="border border-block p-2">
+        <div>Aiden</div>
+        <p>
+          Lorem ipsum dolor sit amet, conse tfctetur adipiscing elit. Vel in in
+          donec iaculis tempasus odio nunc laoreet . Libero ullam rgscorper.
+        </p>
+        <div>x x x x</div>
+      </div>
+
+      <div class="border border-block p-2">TAG</div>
+    </aside>
+
+    <div class="flex-1">
+      <section>
+        <h2 class="text-left text-2xl">Featured Posts</h2>
+        <div class="flex lg:flex-row flex-col lg:space-x-4 text-left">
+          <div class="flex-1 border border-black px-2 py-3">
+            <img class="w-full h-[150px]" src="" alt="" />
+            <h2>What is a Virtual Assistant</h2>
+            <div>Date: xxxx-xx-xx</div>
+            <p>
+              Nemo vel ad consectetur namut rutrum ex, venenatis sollicitudin
+              urna. Aliquam erat volutpat. Integer eu ipsum sem. Ut bibendum
+              lacus vestibulum maximus suscipit. Quisque vitae nibh iaculis
+              neque blan
+            </p>
+            <button>Read More</button>
+          </div>
+          <div class="flex-1 border border-black">
+            <ul class="overflow-y-auto lg:max-h-[480px]">
+              {
+                articles.map((item) => {
+                  return (
+                    <li class="flex">
+                      <img class="w-[100px] h-[80px]" src="" alt="" />
+                      <div>
+                        <h3>{item.title}</h3>
+                        <span>Date: {item.date}</span>
+                      </div>
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-left text-2xl">Recent Posts</h2>
+        <div>
+          <ul class="flex flex-wrap">
+            {
+              articles.map((item) => {
+                return (
+                  <li class="lg:w-1/2 w-full">
+                    <img class="w-full h-auto" src="" alt="img" />
+                    <h3 class="text-xl">{item.title}</h3>
+                    <span>Date: {item.date}</span>
+                    <p>{item.description}</p>
+                    <button>Read More</button>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <div class="h-[300px]"></div>
+</MainGridLayout>

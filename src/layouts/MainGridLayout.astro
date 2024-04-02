@@ -1,0 +1,25 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Header from "@/components/Header.astro";
+---
+
+<BaseLayout>
+  <div class="h-screen relative">
+    <Header />
+    <main class="main-content container mx-auto">
+      <slot />
+    </main>
+  </div>
+</BaseLayout>
+<style>
+  /* .container {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 100px 20px 80px);
+    grid-template-rows: 50px 50px 50px;
+  }*/
+  .item {
+    text-align: center;
+    border: 1px solid gray;
+  }
+</style>

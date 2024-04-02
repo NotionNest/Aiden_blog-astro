@@ -1,5 +1,5 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
+import MainGridLayout from "./MainGridLayout.astro";
 
 const { frontmatter } = Astro.props;
 const allPosts = await Astro.glob("../pages/posts/*.md");
@@ -13,7 +13,7 @@ frontmatter.tags.map((tag) => {
 });
 ---
 
-<BaseLayout>
+<MainGridLayout>
   <h1>{frontmatter.title}</h1>
   <p>发表于： {frontmatter.pubDate.toString().slice(0, 10)}</p>
   <p><em>{frontmatter.description}</em></p>
@@ -31,7 +31,7 @@ frontmatter.tags.map((tag) => {
   </div>
 
   <slot />
-</BaseLayout>
+</MainGridLayout>
 <style>
   a {
     color: #00539f;
